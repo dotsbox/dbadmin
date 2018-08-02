@@ -4,19 +4,36 @@ services:
     build: .
     command: bundle exec unicorn -E production -c config/unicorn.rb
     ports:
-      - "5000:5000"
+      - "0.0.0.0:5000:5000"
     volumes:
-      - .:/app
+      - .:/app     
+    depends_on:
+      - db
+    links:
+      - db
     environment:
-      - MYSQL_HOST
-      - MYSQL_USER
-      - MYSQL_PASSWORD
-      - MYSQL_PORT
-      - SECRET_KEY_BASE
-      - RAILS_ENV
-      - SDC_SENDGRID_API_KEY
-      - SDC_SENDGRID_FROM
-      - SDC_SENDGRID_APPROVETEMPLATE
+     # MYSQL_HOST:db
+     # MYSQL_USER: root
+     # MYSQL_PASSWORD: password
+     # MYSQL_PORT: 3306
+     # SECRET_KEY_BASE
+      RAILS_ENV
+     # SDC_SENDGRID_API_KEY
+     # SDC_SENDGRID_FROM
+     # SDC_SENDGRID_APPROVETEMPLATE
+      
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    volumes:
+      db-data:/var/lib/mysql
+    #environment:
+     # MYSQL_ROOT_PASSWORD: password
+     # MYSQL_DATABASE: dbadmin
+
+
+ 
   # db:
   #   image: mysql
   #   ports:
