@@ -16,8 +16,8 @@ services:
      # MYSQL_USER: root
      # MYSQL_PASSWORD: password
      # MYSQL_PORT: 3306
-     # SECRET_KEY_BASE
-      RAILS_ENV
+     SECRET_KEY_BASE: 'h6rbZUsoTLMxX7dvLUto;s8NGy8HyU4mPis8cyoNmpPckvgZ,V'
+     RAILS_ENV: development
      # SDC_SENDGRID_API_KEY
      # SDC_SENDGRID_FROM
      # SDC_SENDGRID_APPROVETEMPLATE
@@ -32,6 +32,8 @@ services:
      # MYSQL_ROOT_PASSWORD: password
      # MYSQL_DATABASE: dbadmin
 
+volumes:
+  db-data:
 
  
   # db:
